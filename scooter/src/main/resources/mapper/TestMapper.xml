@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scooter.TestMapper">
+
+    <select id="getSignalTimeList" resultType="com.scooter.domain.SignalTime" parameterType="com.scooter.domain.SignalTime">
+        SELECT `signal`, time, kickboard_idx FROM ${table} WHERE kickboard_company_idx = #{company_id} AND kickboard_idx = #{kickboard_id} AND date_format(time, '%Y-%m-%d') = #{date} order by idx
+    </select>
+
+    <select id="getSignalTimeOne" resultType="com.scooter.domain.SignalTime" parameterType="com.scooter.domain.SignalTime">
+        SELECT `signal`, time, kickboard_idx FROM ${table} WHERE kickboard_company_idx = #{company_id} AND kickboard_idx = #{kickboard_id} order by idx limit 1
+    </select>
+
+
+</mapper>
